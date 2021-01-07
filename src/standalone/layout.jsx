@@ -32,7 +32,6 @@ export default class StandaloneLayout extends React.Component {
 
       <Container className='swagger-ui'>
         {Topbar ? <Topbar /> : null}
-sssssss22
         <Row>
           <div style={{ width: "20%", float: "left" }}>
             <Leftbar />
