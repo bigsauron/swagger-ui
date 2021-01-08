@@ -93,38 +93,8 @@ export default class Topbar extends React.Component {
   }
 
   render() {
-    let { getComponent, specSelectors, getConfigs } = this.props
-    const Button = getComponent("Button")
+    let { getComponent } = this.props
     const Link = getComponent("Link")
-
-    let isLoading = specSelectors.loadingStatus() === "loading"
-    let isFailed = specSelectors.loadingStatus() === "failed"
-
-    const classNames = ["download-url-input"]
-    if (isFailed) classNames.push("failed")
-    if (isLoading) classNames.push("loading")
-
-    const { urls } = getConfigs()
-    let control = []
-
-    if (urls) {
-      let rows = []
-      urls.forEach((link, i) => {
-        rows.push(<option key={i} value={link.url}>{link.name}</option>)
-      })
-
-      control.push(
-        <label className="select-label" htmlFor="select"><span>Select a definition</span>
-          <select id="select" disabled={isLoading} onChange={this.onUrlSelect} value={urls[this.state.selectedIndex].url}>
-            {rows}
-          </select>
-        </label>
-      )
-    }
-    else {
-      control.push(<input className={classNames.join(" ")} type="text" onChange={this.onUrlChange} value={this.state.url} disabled={isLoading} />)
-      control.push(<Button className="download-url-button" onClick={this.downloadUrl}>Explore</Button>)
-    }
 
     return (
       <div className="topbar" style={{ backgroundColor: "#f60" }}>
